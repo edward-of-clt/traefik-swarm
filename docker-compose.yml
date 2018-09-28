@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   traefik:
-    image: traefik
+    image: eherbert/traefik
     command: --docker  --docker.swarmmode --api --docker.domain=edward-of-clt.com --docker.watch --logLevel=DEBUG
     networks:
       - traefik
