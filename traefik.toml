@@ -1,18 +1,27 @@
+defaultEntryPoints = ["http"]
+
 [entryPoints]
+  [entryPoints.http]
+  address = ":80"
   [entryPoints.https]
   address = ":443"
     [entryPoints.https.tls]
 
 [acme]
 email = "abeh78@gmail.com"
-storage = "acme.json"
-caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
+storage = "/etc/traefik/acme/acme.json"
+caServer = "https://acme-v02.api.letsencrypt.org/directory"
+#caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
+onHostRule = true
 entryPoint = "https"
+  [acme.httpChallenge]
+  entryPoint = "http"
   [acme.dnsChallenge]
   provider = "digitalocean"
   delayBeforeCheck = 0
 
 [[acme.domains]]
   main = "*.edward-of-clt.com"
+  sans = ["edward-of-clt.com"]
 [[acme.domains]]
-  main = "*.kainoscharlotte.com"
+  main = "*.reconcilecharlotte.com"
