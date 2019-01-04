@@ -1,6 +1,10 @@
+defaultEntryPoints = ["https"]
+
 [entryPoints]
   [entryPoints.http]
   address = ":80"
+  [entryPoints.http.redirect]
+    entryPoint = "https"
   [entryPoints.https]
   address = ":443"
     [entryPoints.https.tls]
@@ -9,8 +13,8 @@
 email = "abeh78@gmail.com"
 storage = "/etc/traefik/acme/acme.json"
 caServer = "https://acme-v02.api.letsencrypt.org/directory"
-#caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
-onHostRule = true
+# caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
+# onHostRule = true
 entryPoint = "https"
   [acme.httpChallenge]
   entryPoint = "http"
@@ -22,5 +26,5 @@ entryPoint = "https"
   main = "*.edward-of-clt.com"
   sans = ["edward-of-clt.com"]
 [[acme.domains]]
-  main = "*.reconcilecharlotte.com"
-  sans = ["reconcilecharlotte.com"]
+  main = "*.reconcileclt.org"
+  sans = ["reconcileclt.org"]

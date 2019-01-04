@@ -7,15 +7,16 @@ services:
       - traefik
     ports:
       - 80:80
+      - 443:443
 #      - 8080:8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 #      - ./traefik.toml:/traefik.toml
-      - /dev/null:/acme.json
+#      - /dev/null:/acme.json
     deploy:
       placement:
         constraints: [node.role==manager]
-        
+
 networks:
   traefik:
     external: true
